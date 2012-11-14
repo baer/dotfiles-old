@@ -1,12 +1,8 @@
-# Sample gitconfig
-#
-# You probably want to change the [user] section here since you are not me.
-
 [hub]
         protocol = https
 [user]
-        name = Zach Holman
-        email = zach@zachholman.com
+        name = Eric Baer
+        email = eric.baer@readytalk.com
 [credential]
         helper = osxkeychain
 [alias]
@@ -15,6 +11,12 @@
         wtf     = !$ZSH/bin/git-wtf
         rank-contributers = !$ZSH/bin/git-rank-contributers
         count   = !git shortlog -sn
+        st = status
+        b = branch
+        pom = pull origin master
+        ndiff = diff --name-only
+        logme = log --author="Eric"
+        blog = log --graph --decorate --pretty=oneline --abbrev-commit
 [color]
         diff = auto
         status = auto

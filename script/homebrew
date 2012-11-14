@@ -15,5 +15,9 @@ else
   echo "  + Homebrew found."
 fi
 
-# Install grc and coreutils
-brew install grc coreutils
+brew install mysql
+brew install rbenv
+brew install tomcat
+brew install git
+brew install zsh
+brew install sqlite
