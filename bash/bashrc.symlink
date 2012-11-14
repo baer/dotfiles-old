@@ -15,7 +15,7 @@ unset file
 # don't put duplicate lines in the history and keep it around
 export HISTCONTROL=ignoreboth:erasedups:ignoredups
 export HISTSIZE=100000
-export HISTIGNORE="&:bg:fg:ll:h"
+export HISTIGNORE="ll:clear:code"
 
 # append to the history file, rather than overwriting it
 shopt -s histappend
