@@ -15,11 +15,36 @@ else
   echo "  + Homebrew found."
 fi
 
-brew install grc 
+# Make sure we’re using the latest Homebrew
+brew update
+
+# Upgrade any already-installed formulae
+brew upgrade
+
+# Install GNU core utilities (those that come with OS X are outdated)
 brew install coreutils
+echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+brew install findutils
+# Install Bash 4
+brew install bash
+
+# Install wget with IRI support
+brew install wget --enable-iri
+
+# Install databases
+brew install sqlite
 brew install mysql
+
+# Install everything else
+brew install git
+brew install node
+brew install grc
+brew install coreutils
 brew install rbenv
 brew install tomcat
 brew install git
 brew install zsh
-brew install sqlite
+
+# Remove outdated versions from the cellar
+brew cleanup
