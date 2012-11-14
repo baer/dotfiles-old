@@ -27,9 +27,9 @@
         local = yellow
         remote = green
 [color "status"]
-        added = yellow
-        changed = green
-        untracked = cyan
+        added = green
+        changed = yellow
+        untracked = red
 [merge]
         # Include summaries of merged commits in newly created merge commit messages
         log = true
