@@ -6,17 +6,27 @@
 [credential]
         helper = osxkeychain
 [alias]
-        co = checkout
         promote = !$ZSH/bin/git-promote
         wtf     = !$ZSH/bin/git-wtf
         rank-contributers = !$ZSH/bin/git-rank-contributers
+
+        co = checkout
+        cm = commit
         count   = !git shortlog -sn
-        st = status
+        st = status -sb
         b = branch
-        pom = pull origin master
         ndiff = diff --name-only
+
+        # Git log aliases
+        log = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
         logme = log --author="Eric"
         blog = log --graph --decorate --pretty=oneline --abbrev-commit
+
+        # Pull/Push
+        plom = pull origin master
+        plod = pull origin develop
+        puom = push origin master
+        puod = push origin develop
 [color]
         diff = auto
         status = auto
