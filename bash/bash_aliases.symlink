@@ -28,12 +28,15 @@ alias whois="whois -h whois-servers.net"
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update'
 
-# Detect which `ls` flavor is in use
+# Detect the proper color flag
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
 else # OS X `ls`
     colorflag="-G"
 fi
+
+# Colorize less
+alias less='less ${colorflag}'
 
 # List all files colorized in long format
 alias ll="ls -alF ${colorflag}"
