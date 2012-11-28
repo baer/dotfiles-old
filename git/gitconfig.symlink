@@ -11,22 +11,22 @@
         rank-contributers = !$ZSH/bin/git-rank-contributers
 
         co = checkout
-        cm = commit
-        count   = !git shortlog -sn
-        st = status -sb
-        b = branch
+        c  = commit
+        s  = status -sb
+        b  = branch
         ndiff = diff --name-only
+        count = !git shortlog -sn
 
         # Git log aliases
-        log = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+        #log   = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
         logme = log --author="Eric"
-        blog = log --graph --decorate --pretty=oneline --abbrev-commit
+        blog  = log --graph --decorate --pretty=oneline --abbrev-commit
 
         # Pull/Push
-        plom = pull origin master
-        plod = pull origin develop
-        puom = push origin master
-        puod = push origin develop
+        pm  = pull origin master
+        pd  = pull origin develop
+        pum = push origin master
+        pud = push origin develop
 [color]
         diff = auto
         status = auto
