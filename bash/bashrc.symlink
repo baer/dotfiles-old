@@ -1,6 +1,9 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"
 
+# NPM Path
+export PATH="/usr/local/bin/node:$PATH"
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
