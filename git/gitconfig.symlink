@@ -14,6 +14,7 @@
         c  = commit
         s  = status -sb
         b  = branch
+        sdiff = diff --short-stat
         ndiff = diff --name-only
         count = !git shortlog -sn
 

@@ -10,7 +10,7 @@ inoremap # X<BS>#
 set nowrap                 " do not wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
-set tabstop=4
+set tabstop=2
 set expandtab              " expand tabs to spaces
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
@@ -60,7 +60,9 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
-syntax on                  " syntax highlighting on by default
+colorscheme railscasts
+syntax on
+
 
 " ----------------------------------------------------------------------------
 " Visual Cues
