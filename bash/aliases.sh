@@ -6,6 +6,7 @@
 
 # Shortcuts
 alias code='cd ~/Code'
+alias reload='source ~/.bashrc'
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
@@ -57,4 +58,3 @@ alias mkdir='mkdir -p'
 
 # Show Path
 alias path='echo -e ${PATH//:/\\n}'
-
