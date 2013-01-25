@@ -1,16 +1,23 @@
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/dotfiles
 export OS=`uname -s`
+
 # source every .sh file in this rep
 for config_file in $(find $DOTFILES -iname "*.sh"); do
   source $config_file
 done
 
-# additionaly source .sh.osx files if we're running OSX
+# If OSX 
 if [ $OS == "Darwin" ]; then
+  # Source .sh.osx files if we're running OSX
   for config_file in $(find $DOTFILES -iname "*.sh.osx"); do
     source $config_file
   done
+
+  # Setup bashcompletion provided by homebrew
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+  fi
 fi
 
 # use .localrc for SUPER SECRET CRAP that you don't
@@ -18,12 +25,4 @@ fi
 if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
-fi
-
-if [ $OS == "Darwin" ]
-then
-  # Setup bashcompletion provided by homebrew
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-  fi
 fi
