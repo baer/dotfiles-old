@@ -26,3 +26,6 @@ if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
 fi
+
+# Setup SSH Agent
+source ~/.ssh/ssh-agent-setup.sh
