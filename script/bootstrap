@@ -4,8 +4,10 @@
 # Assume everyone's on OS X and run Homebrew (*nix-ers beware)
 OS=`uname -s`
 if [ "$OS" == "Darwin" ]; then
-  . script/homebrew
+  . ~/dotfiles/script/homebrew
 fi
 
 # Run the install (I'd like to pull this out of rake, eventually)
-rake install
+cd ~/dotfiles
+rake install dotfiles
+cd -
