@@ -6,6 +6,8 @@
 [credential]
         helper = osxkeychain
 [alias]
+        rebase = rebase -i
+
         promote = !$DOTFILES/bin/git-promote
         wtf     = !$DOTFILES/bin/git-wtf
         rank-contributers = !$DOTFILES/bin/git-rank-contributers
