@@ -4,21 +4,20 @@
 source "$DOTFILES/bash/bash-it.color.theme"
 source "$DOTFILES/bash/bash-it.base.theme"
 
+# Create the SSH location string
 function ssh_info {
   if [ ! -z "$SSH_CONNECTION" ]; then
-    echo -e "${reset_color}${white}@${reset_color}${bold_purple}\h"
+    echo -e "${reset_color}${normal}@${reset_color}${cyan}\h"
   fi
 }
-
 ssh_connection_info="$(ssh_info)"
 
+# Create the Ruby info string
 function ruby_info {
-
   if ! [ -z "$(ruby_version_prompt)" ]; then
     echo -e "${reset_color}${bold_red}\$(ruby_version_prompt) "
   fi
 }
-
 ruby_info="$(ruby_info)"
 
 #added TITLEBAR for updating the tab and window titles with the pwd
@@ -30,7 +29,7 @@ case $TERM in
   TITLEBAR=""
   ;;
 esac
-PROMPT="${bold_purple}\u${reset_color}${white}${TITLEBAR}${ssh_connection_info}${reset_color}${white}:${reset_color}${green}\w ${ruby_info}${reset_color}${white}\$(scm_char) ${reset_color}${bold_blue}\$(scm_prompt_info) ${reset_color}${normal} \n"
+PROMPT="${TITLEBAR}${cyan}\u${ssh_connection_info}${reset_color}${normal}:${reset_color}${green}\w ${ruby_info}${reset_color}${normal}\$(scm_char) ${reset_color}${yellow}\$(scm_prompt_info) ${reset_color}${normal} \n"
 
 
 # scm themeing
