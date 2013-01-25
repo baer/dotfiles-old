@@ -6,8 +6,6 @@
 [credential]
         helper = osxkeychain
 [alias]
-        rebase = rebase -i
-
         promote = !$DOTFILES/bin/git-promote
         wtf     = !$DOTFILES/bin/git-wtf
         rank-contributers = !$DOTFILES/bin/git-rank-contributers
@@ -18,12 +16,13 @@
         b  = branch
         a  = add -A .
 
+        # Diffs
         sdiff = diff --short-stat
         ndiff = diff --name-only
         count = !git shortlog -sn
 
-        # Git log aliases
-        plog   = "log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+        # Logs
+        plog  = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
         logme = log --author="Eric"
         blog  = log --graph --decorate --pretty=oneline --abbrev-commit
 
@@ -32,6 +31,9 @@
         pd  = pull origin develop
         pum = push origin master
         pud = push origin develop
+
+        # Safeguards
+        rebase = rebase -i
 [color]
         diff = auto
         status = auto
