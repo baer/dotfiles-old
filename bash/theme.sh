@@ -21,7 +21,7 @@ case $TERM in
   TITLEBAR=""
   ;;
 esac
-PROMPT="${bold_purple}\u${reset_color}${white}${TITLEBAR}${ssh_connection_info} ${reset_color}${bold_red}\$(ruby_version_prompt) ${reset_color}${white}in ${reset_color}${green}\w ${reset_color}${white}\$(scm_char) ${reset_color}${bold_blue}\$(scm_prompt_info) ${reset_color}${normal} \n"
+PROMPT="${bold_purple}\u${reset_color}${white}${TITLEBAR}${ssh_connection_info}${reset_color}${white}:${reset_color}${green}\w ${reset_color}${bold_red}\$(ruby_version_prompt) ${reset_color}${white}\$(scm_char) ${reset_color}${bold_blue}\$(scm_prompt_info) ${reset_color}${normal} \n"
 
 
 # scm themeing
