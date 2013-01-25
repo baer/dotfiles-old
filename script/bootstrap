@@ -9,5 +9,5 @@ fi
 
 # Run the install (I'd like to pull this out of rake, eventually)
 cd ~/dotfiles
-rake install dotfiles
+rake install
 cd -
