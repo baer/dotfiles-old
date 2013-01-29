@@ -21,32 +21,41 @@ brew update
 # Upgrade any already-installed formulae
 brew upgrade
 
-# Install GNU core utilities (those that come with OS X are outdated)
-brew install coreutils
-echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
-
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew install findutils
-
-# Install Bash 4
-brew install bash
-
 # Install wget with IRI support
 brew install wget --enable-iri
 
-# Install databases
-brew install sqlite
-brew install mysql
+packages=(
+  # Install GNU core utilities (those that come with OS X are outdated)
+  coreutils
 
-# Install everything else
-brew install git
-brew install node
-brew install grc
-brew install rbenv
-brew install tomcat
-brew install git
-brew install autojump
-brew install ruby-build
+  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+  findutils
+
+  # Install Bash 4
+  bash
+
+  # Install databases
+  sqlite
+  mysql
+
+  # Install everything else
+  git
+  node
+  grc
+  rbenv
+  tomcat
+  git
+  autojump
+  ruby-build
+)
+
+for i in "${packages[@]}"
+do
+  CMD="brew install $i"
+  $CMD
+done
+echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+
 
 # Remove outdated versions from the cellar
 brew cleanup
