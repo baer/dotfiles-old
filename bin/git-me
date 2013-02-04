@@ -6,8 +6,8 @@
 #
 # USAGE:
 #
-#   $ git-me 
-#   # => opens the current directory in your editor
+#   $ git-me home 
+#   # => changes your git credentials for that repository to be your "home" credentials
 
 
 if test "$1" == "home"
@@ -19,3 +19,6 @@ then
   git config user.name "Eric Baer"
   git config user.email eric.baer@readytalk.com
 fi
+echo "Your config for this repo is now set to:"
+eval "grep \"name\" .git/config"
+eval "grep \"email\" .git/config"
