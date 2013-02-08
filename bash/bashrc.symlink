@@ -27,5 +27,7 @@ then
   source ~/.localrc
 fi
 
-# Setup SSH Agent
-source ~/.ssh/ssh-agent-setup.sh
+# Setup SSH Agent on Linux
+if [ $OS == "Linux" ]; then
+  source ~/.ssh/ssh-agent-setup.sh
+fi
