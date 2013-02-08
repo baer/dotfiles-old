@@ -17,7 +17,7 @@
         a  = add -A .
 
         # Diffs
-        sdiff = diff --short-stat
+        sdiff = diff --shortstat
         ndiff = diff --name-only
         count = !git shortlog -sn
 
