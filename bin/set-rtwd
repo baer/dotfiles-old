@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Setup ReadyTalk working directory
+#
+
+function checkArgs
+{
+	if test $1 -ne 1
+	then
+		echo "Usage: set-rtwd <newWorkingDir>"
+		exit 1
+	fi
+}
+
+checkArgs $#
+modify-unversioned-config "RTWD" "$1"
+echo "ReadyTalk working directory set to $1"
