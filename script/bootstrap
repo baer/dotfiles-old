@@ -117,12 +117,16 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 
-# If we are on a mac, lets install and setup homebrew
+# If we are on a mac, lets install and setup homebrew and iTerm2
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing homebrew\n"
   sh script/homebrew
-  success "dependencies installed"
+  success "homebrew dependencies installed"
+
+  info "installing iTerm2\n"
+  sh script/iterm2
+  success "iTerm2 installed"
 fi
 
 echo ''
