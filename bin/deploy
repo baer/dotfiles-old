@@ -10,6 +10,13 @@ function checkDirectory
 		echo "Warning: Your RTWD (ReadyTalk Working Directory) is not set. Run set-rtwd to set it."
 		exit 1
 	fi
+
+	if [ ! -f $PATH_TO_DEPLOY ]
+	then
+		echo "Warning: Your RTWD (ReadyTalk Working Directory) is set, but" $PATH_TO_DEPLOY "isn't there."
+		echo "Use set-rtwd <pathToDirectory> to correct the problem."
+		exit 1
+	fi
 }
 
 function checkPond
@@ -43,11 +50,12 @@ function getDeployCommands
 	echo $retCommands
 }
 
+PATH_TO_DEPLOY=$RTWD/deploy/deploy.sh
+
 checkArgs $#
 checkDirectory
 checkPond
 
-PATH_TO_DEPLOY=$RTWD/deploy/deploy.sh
 COMMANDS=$(getDeployCommands $@)
 
 echo 'About to run' $COMMANDS
