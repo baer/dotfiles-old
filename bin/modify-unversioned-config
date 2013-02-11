@@ -28,7 +28,7 @@ checkConfigFile
 
 if grep -q "$1" $CONFIG_FILE
 then
-	file=$(mktemp -t tmpswp)
+	file=$(mktemp -t tmpswpXXX)
 	sed "s/$1=.*/$1=$2/g" $CONFIG_FILE > ${file}
 	mv ${file} $CONFIG_FILE
 else
