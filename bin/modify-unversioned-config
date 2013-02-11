@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# Configure variables in your unversioned config file
+#
+
+CONFIG_FILE=~/.localrc
+
+function checkArgs
+{
+	if test $1 -lt 2
+	then
+		echo "Usage: modify-unversioned-config <variableToAdd/Change> <newValue>"
+		exit 1
+	fi
+}
+
+function checkConfigFile
+{
+	if [ ! -f $CONFIG_FILE ]
+	then
+		echo '$CONFIG_FILE did not exist. creating.'
+		touch $CONFIG_FILE
+	fi
+}
+
+checkArgs $#
+checkConfigFile
+
+if grep -q "$1" $CONFIG_FILE
+then
+	file=$(mktemp -t tmpswpXXX)
+	sed "s/"$1"=.*/"$1"="$2"/g" $CONFIG_FILE > ${file}
+	mv ${file} $CONFIG_FILE
+else
+	# add
+	echo 'export' $1=$2 >> $CONFIG_FILE
+fi
+
+echo 'Please source your ~/.localrc or run reload'

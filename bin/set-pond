@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Setup ReadyTalk pond variable
+#
+
+function checkArgs
+{
+	if test $1 -ne 1
+	then
+		echo "Usage: set-pond <newPond>"
+		exit 1
+	fi
+}
+
+checkArgs $#
+modify-unversioned-config "RTPOND" "$1"
+echo "Deploy pond set to $1"

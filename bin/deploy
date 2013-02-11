@@ -1,0 +1,66 @@
+#!/bin/sh
+#
+# ReadyTalk deploy helper
+#
+
+function checkDirectory
+{
+	if [ -z "$RTWD" ]
+	then
+		echo "Warning: Your RTWD (ReadyTalk Working Directory) is not set. Run set-rtwd to set it."
+		exit 1
+	fi
+
+	if [ ! -f $PATH_TO_DEPLOY ]
+	then
+		echo "Warning: Your RTWD (ReadyTalk Working Directory) is set, but" $PATH_TO_DEPLOY "isn't there."
+		echo "Use set-rtwd <pathToDirectory> to correct the problem."
+		exit 1
+	fi
+}
+
+function checkPond
+{
+	if [ -z "$RTPOND" ]
+	then
+		echo "Warning: Your RTPOND is not set. Run set-pond to set it."
+		exit 1
+	fi
+}
+
+function checkArgs
+{
+	if test $1 -lt 1
+	then
+		echo "Usage: deploy <command0>...<commandN>"
+		exit 1
+	fi
+}
+
+function getDeployCommands
+{
+	retCommands=""
+
+	while test $# -gt 0
+	do
+		retCommands="$retCommands $1"
+		shift
+	done
+
+	echo $retCommands
+}
+
+PATH_TO_DEPLOY=$RTWD/deploy/deploy.sh
+
+checkArgs $#
+checkDirectory
+checkPond
+
+COMMANDS=$(getDeployCommands $@)
+
+echo 'About to run' $COMMANDS
+echo 'from' $RTWD
+echo 'on pond' $RTPOND
+read -r -p "Are you sure? [Enter/CTRL-C]"
+
+bash $PATH_TO_DEPLOY $RTPOND $COMMANDS
