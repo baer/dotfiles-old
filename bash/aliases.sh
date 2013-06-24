@@ -36,22 +36,13 @@ alias mkdir='mkdir -p'
 # ls less With DIRCOLORS
 # ----------------------------------------------------------------------
 
-# we always pass these to ls(1)
-LS_COMMON="-hBG"
-
-# if the dircolors utility is available, set that up to
-dircolors="$(type -P gdircolors dircolors | head -1)"
-test -n "$dircolors" && {
-    COLORS=/etc/DIR_COLORS
-    test -e "/etc/DIR_COLORS.$TERM"   && COLORS="/etc/DIR_COLORS.$TERM"
-    test -e "$HOME/.dircolors"        && COLORS="$HOME/.dircolors"
-    test ! -e "$COLORS"               && COLORS=
-    eval `$dircolors --sh $COLORS`
-}
-unset dircolors
-
-# setup the main ls alias if we've established common args
-test -n "$LS_COMMON" &&
-alias ls="command ls $LS_COMMON"
-
-alias less="command less -G"
+# grc overides for ls
+#   Made possible through contributions from generous benefactors like
+#   `brew install coreutils`
+if $(gls &>/dev/null)
+then
+  alias ls="gls -F --color"
+  alias l="gls -lAh --color"
+  alias ll="gls -l --color"
+  alias la='gls -A --color'
+fi

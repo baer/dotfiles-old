@@ -1,9 +1,5 @@
-# See what we have to work with ...
-HAVE_VIM=$(command -v vim)
-HAVE_GVIM=$(command -v gvim)
-
-# EDITOR
-test -n "$HAVE_VIM" &&
-EDITOR=vim ||
-EDITOR=vi
-export EDITOR
+# Only set this if we haven't set $EDITOR up somewhere else previously.
+if [[ "$EDITOR" == "" ]] ; then
+  # Use sublime for my editor.
+  export EDITOR='subl'
+fi

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # bootstrap installs things.
 
@@ -120,9 +120,16 @@ install_dotfiles
 # If we are on a mac, lets install and setup homebrew
 if [ "$(uname -s)" == "Darwin" ]
 then
-  info "installing homebrew\n"
+  info "installing dependencies"
+
   sh script/homebrew
-  success "dependencies installed"
+  
+  if . bin/dot > /tmp/dotfiles-dot 2>&1
+  then
+    success "dependencies installed"
+  else
+    fail "error installing dependencies"
+  fi
 fi
 
 echo ''
