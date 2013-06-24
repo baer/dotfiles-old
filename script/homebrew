@@ -40,6 +40,7 @@ packages=(
 
   # Install everything else
   git
+  htop
   node
   grc
   rbenv
