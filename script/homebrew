@@ -43,11 +43,6 @@ packages=(
   htop
   node
   grc
-  rbenv
-  tomcat
-  git
-  autojump
-  ruby-build
 )
 
 for i in "${packages[@]}"

@@ -2,7 +2,7 @@
         protocol = https
 [user]
         name = Eric Baer
-        email = eric.baer@readytalk.com
+        email = me@ericbaer.com
 [credential]
         helper = osxkeychain
 [alias]
