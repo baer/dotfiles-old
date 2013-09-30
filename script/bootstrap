@@ -9,7 +9,7 @@ set -e
 echo ''
 
 heading () {
-  printf "\n  \e[33m$1\n\n"
+  printf "\n  \e[33m$1\033[0m\n\n"
 }
 
 info () {
