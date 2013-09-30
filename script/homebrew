@@ -11,8 +11,6 @@ then
   echo "  x You should probably install Homebrew first:"
   echo "    https://github.com/mxcl/homebrew/wiki/installation"
   return
-else
-  echo ""
 fi
 
 packages=(

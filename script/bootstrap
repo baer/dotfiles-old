@@ -8,6 +8,10 @@ set -e
 
 echo ''
 
+heading () {
+  printf "\n  $1\n\n"
+}
+
 info () {
   printf "  [ \033[00;34m..\033[0m ] $1"
 }
@@ -121,19 +125,31 @@ install_dotfiles () {
 }
 
 setup_gitconfig
+
+heading "Symlinking dotfiles..."
 install_dotfiles
 
-# If we are on a mac, lets install and setup homebrew
+# If we are on a mac, lets install and setup homebrew and iterm2
 if [ "$(uname -s)" == "Darwin" ]
 then
-  info "installing homebrew formulae..."
+
+  # Install iTerm2
+  heading "Installing iTerm2..."
+  . script/iterm2
+  if [ $? -eq 0 ];
+  then
+    success "iTerm2 installed"
+  else
+    fail "error installing iTerm2"
+  fi
+
+  # Install Homebrew Packages
+  heading "Installing homebrew formulae...\n"
   . script/homebrew
   if [ $? -eq 0 ];
   then
     success "formulae installed"
-    echo ''
-    echo "  Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
-
+    heading "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
   else
     fail "error installing formulae"
   fi
