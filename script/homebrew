@@ -12,52 +12,43 @@ then
   echo "    https://github.com/mxcl/homebrew/wiki/installation"
   return
 else
-  echo " + Homebrew found."
+  echo ""
 fi
 
-brew_it () {
-  # Make sure we’re using the latest Homebrew
-  brew update
+packages=(
+  # Install GNU core utilities (those that come with OS X are outdated)
+  coreutils
 
-  # Upgrade any already-installed formulae
-  brew upgrade
+  # Install Bash 4
+  bash
 
-  # Install wget with IRI support
-  brew install wget --enable-iri
+  # Install databases
+  sqlite
+  mysql
+  mongodb
 
-  packages=(
-    # Install GNU core utilities (those that come with OS X are outdated)
-    coreutils
+  # Install everything else
+  git
+  htop
+  node
+  grc
+)
 
-    # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-    findutils
+# Make sure we’re using the latest Homebrew
+brew update >/dev/null 2>/dev/null
 
-    # Install Bash 4
-    bash
+# Upgrade any already-installed formulae
+brew upgrade >/dev/null 2>/dev/null
 
-    # Install databases
-    sqlite
-    mysql
+for i in "${packages[@]}"
+do
+  info "installing $i"
+  CMD="brew install $i"
+  $CMD >/dev/null 2>/dev/null
+  success "$i is now installed"
+done
 
-    # Install everything else
-    git
-    htop
-    node
-    grc
-  )
-
-  for i in "${packages[@]}"
-  do
-    CMD="brew install $i"
-    $CMD
-  done
-  echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
-
-  # Remove outdated versions from the cellar
-  brew cleanup
-}
-
-# Run Homebrew stuff with supressed output
-brew_it >/dev/null 2>/dev/null
+# Remove outdated versions from the cellar
+brew cleanup >/dev/null 2>/dev/null
 
 return 0

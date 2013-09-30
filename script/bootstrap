@@ -126,13 +126,16 @@ install_dotfiles
 # If we are on a mac, lets install and setup homebrew
 if [ "$(uname -s)" == "Darwin" ]
 then
-  info "installing dependencies"
+  info "installing homebrew formulae..."
   . script/homebrew
   if [ $? -eq 0 ];
   then
-    success "dependencies installed"
+    success "formulae installed"
+    echo ''
+    echo "  Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+
   else
-    fail "error installing dependencies"
+    fail "error installing formulae"
   fi
 fi
 
