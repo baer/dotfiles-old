@@ -10,26 +10,12 @@ if test ! $(which brew)
 then
   echo "  x You should probably install Homebrew first:"
   echo "    https://github.com/mxcl/homebrew/wiki/installation"
-  exit
-else
-  echo " + Homebrew found."
+  return
 fi
-
-# Make sure we’re using the latest Homebrew
-brew update
-
-# Upgrade any already-installed formulae
-brew upgrade
-
-# Install wget with IRI support
-brew install wget --enable-iri
 
 packages=(
   # Install GNU core utilities (those that come with OS X are outdated)
   coreutils
-
-  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-  findutils
 
   # Install Bash 4
   bash
@@ -37,6 +23,7 @@ packages=(
   # Install databases
   sqlite
   mysql
+  mongodb
 
   # Install everything else
   git
@@ -45,14 +32,25 @@ packages=(
   grc
 )
 
+# Make sure we’re using the latest Homebrew
+info "updating Homebrew"
+brew update >/dev/null 2>/dev/null
+success "Homebrew is up to date"
+
+# Upgrade any already-installed formulae
+info "upgrade installed formulae"
+brew upgrade >/dev/null 2>/dev/null
+success "Formulae are all up to date"
+
 for i in "${packages[@]}"
 do
+  info "installing $i"
   CMD="brew install $i"
-  $CMD
+  $CMD >/dev/null 2>/dev/null
+  success "$i is now installed"
 done
-echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
 
 # Remove outdated versions from the cellar
-brew cleanup
+brew cleanup >/dev/null 2>/dev/null
 
-exit 0
+return 0

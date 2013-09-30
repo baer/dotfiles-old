@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# iTerm2
+#
+# This installs iTerm2 from the specified mirror.
+# If you want to be ballsy and use a beta/canary build, change the ROOT_URL/FILENAME.
+
+ROOT_URL='http://iterm2.googlecode.com/files/'
+FILENAME='iTerm2_v1_0_0.zip'
+TEMPDIR='/tmp/'
+APP_NAME='iTerm.app'
+
+# Exit silently if iTerm is already there
+if [ "$TERM_PROGRAM" == "iTerm.app" ] && [ -d '/Applications/iTerm.app' ]
+then
+  return 0
+fi
+
+wget -P $TEMPDIR $ROOT_URL$FILENAME
+unzip -d $TEMPDIR $TEMPDIR$FILENAME
+mv $TEMPDIR$APP_NAME /Applications/
+rm $TEMPDIR$FILENAME
+
+return 0
