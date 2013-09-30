@@ -10,49 +10,54 @@ if test ! $(which brew)
 then
   echo "  x You should probably install Homebrew first:"
   echo "    https://github.com/mxcl/homebrew/wiki/installation"
-  exit
+  return
 else
   echo " + Homebrew found."
 fi
 
-# Make sure we’re using the latest Homebrew
-brew update
+brew_it () {
+  # Make sure we’re using the latest Homebrew
+  brew update
 
-# Upgrade any already-installed formulae
-brew upgrade
+  # Upgrade any already-installed formulae
+  brew upgrade
 
-# Install wget with IRI support
-brew install wget --enable-iri
+  # Install wget with IRI support
+  brew install wget --enable-iri
 
-packages=(
-  # Install GNU core utilities (those that come with OS X are outdated)
-  coreutils
+  packages=(
+    # Install GNU core utilities (those that come with OS X are outdated)
+    coreutils
 
-  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-  findutils
+    # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+    findutils
 
-  # Install Bash 4
-  bash
+    # Install Bash 4
+    bash
 
-  # Install databases
-  sqlite
-  mysql
+    # Install databases
+    sqlite
+    mysql
 
-  # Install everything else
-  git
-  htop
-  node
-  grc
-)
+    # Install everything else
+    git
+    htop
+    node
+    grc
+  )
 
-for i in "${packages[@]}"
-do
-  CMD="brew install $i"
-  $CMD
-done
-echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+  for i in "${packages[@]}"
+  do
+    CMD="brew install $i"
+    $CMD
+  done
+  echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
 
-# Remove outdated versions from the cellar
-brew cleanup
+  # Remove outdated versions from the cellar
+  brew cleanup
+}
 
-exit 0
+# Run Homebrew stuff with supressed output
+brew_it >/dev/null 2>/dev/null
+
+return 0

@@ -127,7 +127,8 @@ install_dotfiles
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
-  if . script/homebrew > /tmp/dotfiles-dot 2>&1
+  . script/homebrew
+  if [ $? -eq 0 ];
   then
     success "dependencies installed"
   else
