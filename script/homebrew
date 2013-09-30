@@ -30,6 +30,7 @@ packages=(
   htop
   node
   grc
+  bash-completion
 )
 
 # Make sure we’re using the latest Homebrew
