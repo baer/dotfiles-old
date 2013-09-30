@@ -29,6 +29,3 @@ fi
 
 # Setup SSH Agent
 source ~/.ssh/ssh-agent-setup.sh
-
-# Load NVM
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh
