@@ -9,7 +9,7 @@ set -e
 echo ''
 
 heading () {
-  printf "\n  $1\n\n"
+  printf "\n  \e[33m$1\n\n"
 }
 
 info () {
@@ -96,6 +96,9 @@ install_dotfiles () {
           * )
             ;;
         esac
+
+        echo ''
+        heading "Symlinking dotfiles..."
       fi
 
       if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
@@ -125,8 +128,6 @@ install_dotfiles () {
 }
 
 setup_gitconfig
-
-heading "Symlinking dotfiles..."
 install_dotfiles
 
 # If we are on a mac, lets install and setup homebrew and iterm2
@@ -144,7 +145,7 @@ then
   fi
 
   # Install Homebrew Packages
-  heading "Installing homebrew formulae...\n"
+  heading "Installing homebrew formulae..."
   . script/homebrew
   if [ $? -eq 0 ];
   then

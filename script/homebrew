@@ -33,10 +33,14 @@ packages=(
 )
 
 # Make sure we’re using the latest Homebrew
+info "updating Homebrew"
 brew update >/dev/null 2>/dev/null
+success "Homebrew is up to date"
 
 # Upgrade any already-installed formulae
+info "upgrade installed formulae"
 brew upgrade >/dev/null 2>/dev/null
+success "Formulae are all up to date"
 
 for i in "${packages[@]}"
 do

@@ -16,8 +16,6 @@ then
   return 0
 fi
 
-echo "  You poor dear, you are running in" $TERM_PROGRAM"-let's fix that."
-
 wget -P $TEMPDIR $ROOT_URL$FILENAME
 unzip -d $TEMPDIR $TEMPDIR$FILENAME
 mv $TEMPDIR$APP_NAME /Applications/
