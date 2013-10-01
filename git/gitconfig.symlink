@@ -6,10 +6,13 @@
 [credential]
         helper = osxkeychain
 [alias]
-        promote = !$DOTFILES/bin/git-promote
-        wtf     = !$DOTFILES/bin/git-wtf
-        rank-contributers = !$DOTFILES/bin/git-rank-contributers
+        # Display concise repository status
+        wtf  = !$DOTFILES/bin/git-wtf
 
+        # Delete all local branches that have been merged into HEAD 
+        dall = branch -d `git branch --merged | grep -v '^*' | grep -v 'master' | tr -d '\n'`
+
+        # shortcuts
         co = checkout
         c  = commit
         s  = status -sb
