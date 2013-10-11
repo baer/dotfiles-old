@@ -19,8 +19,8 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 Run this:
 
 ```sh
-git clone https://github.com/baer/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/baer/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 script/bootstrap
 ```
 
