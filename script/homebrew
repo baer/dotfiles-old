@@ -20,11 +20,6 @@ packages=(
   # Install Bash 4
   bash
 
-  # Install databases
-  sqlite
-  mysql
-  mongodb
-
   # Install everything else
   git
   htop

@@ -32,3 +32,6 @@ source ~/.ssh/ssh-agent-setup.sh
 
 # Load NVM
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh
+
+#Java Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
