@@ -1,35 +1,22 @@
 'editor':
-  'showIndentGuide': true
+  'fontSize': 14
   'fontFamily': 'Menlo'
-  'fontSize': 15
+  'preferredLineLength': 100
+  'showInvisibles': true
+  'showIndentGuide': true
 'core':
-  'excludeVcsIgnoredPaths': true
-  'ignoredNames': [
-    '.bundle'
-    '.git'
-    'log'
-    'repositories'
-    'tmp'
-    'vendor'
-  ]
   'themes': [
-    'unity-ui'
-    'glacier-syntax'
+    'atom-dark-ui'
+    'atom-dark-syntax'
   ]
-  'hideGitIgnoredFiles': true
   'disabledPackages': [
-    'background-tips'
-    'exception-reporting'
-    'metrics'
+    'autocomplete'
   ]
-'spell-check':
-  'grammars': [
-    'text.plain'
-    'source.gfm'
-    'text.git-commit'
-  ]
+'exception-reporting':
+  'userId': 'a26bd123-9c44-e41b-5cfa-0194d7071c58'
+'release-notes':
+  'viewedVersion': '0.94.0'
 'welcome':
   'showOnStartup': false
-'release-notes':
-  'viewedVersion': '0.89.0'
-'tree-view': {}
+'metrics':
+  'userId': '04afa7c669423e4f94d2a39fba25a169d71aa65a'
