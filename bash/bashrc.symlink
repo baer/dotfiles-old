@@ -7,7 +7,7 @@ for config_file in $(find $DOTFILES -iname "*.sh"); do
   source $config_file
 done
 
-# If OSX 
+# If OSX
 if [ $OS == "Darwin" ]; then
   # Source .sh.osx files if we're running OSX
   for config_file in $(find $DOTFILES -iname "*.sh.osx"); do
@@ -29,9 +29,6 @@ fi
 
 # Setup SSH Agent
 source ~/.ssh/ssh-agent-setup.sh
-
-# Load NVM
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh
 
 #Java Home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home
