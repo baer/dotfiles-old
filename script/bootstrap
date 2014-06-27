@@ -2,15 +2,12 @@
 #
 # bootstrap installs things.
 
-DOTFILES_ROOT="`pwd`"
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd)
 
 set -e
 
 echo ''
-
-heading () {
-  printf "\n  \e[33m$1\033[0m\n\n"
-}
 
 info () {
   printf "  [ \033[00;34m..\033[0m ] $1"
@@ -30,54 +27,28 @@ fail () {
   exit
 }
 
-setup_gitconfig () {
-  if ! [ -f git/gitconfig.symlink ]
+link_file () {
+  local src=$1 dst=$2
+
+  local overwrite= backup= skip=
+  local action=
+
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
   then
-    info 'setup gitconfig'
 
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
-      git_credential='osxkeychain'
-    fi
-
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" git/gitconfig.symlink > git/gitconfig.symlink
-
-    success 'gitconfig'
-  fi
-}
-
-link_files () {
-  ln -s $1 $2
-  success "linked $1 to $2"
-}
-
-install_dotfiles () {
-  info 'installing dotfiles'
-
-  overwrite_all=false
-  backup_all=false
-  skip_all=false
-
-  for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
-  do
-    dest="$HOME/.`basename \"${source%.*}\"`"
-
-    if [ -f $dest ] || [ -d $dest ]
+    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
 
-      overwrite=false
-      backup=false
-      skip=false
+      local currentSrc="$(readlink $dst)"
 
-      if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
+      if [ "$currentSrc" == "$src" ]
       then
-        user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+
+        skip=true;
+
+      else
+
+        user "File already exists: $(basename "$src"), what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -97,45 +68,58 @@ install_dotfiles () {
             ;;
         esac
 
-        echo ''
-        heading "Symlinking dotfiles..."
       fi
 
-      if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
-      then
-        rm -rf $dest
-        success "removed $dest"
-      fi
-
-      if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]
-      then
-        mv $dest $dest\.backup
-        success "moved $dest to $dest.backup"
-      fi
-
-      if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
-      then
-        link_files $source $dest
-      else
-        success "skipped $source"
-      fi
-
-    else
-      link_files $source $dest
     fi
 
+    overwrite=${overwrite:-$overwrite_all}
+    backup=${backup:-$backup_all}
+    skip=${skip:-$skip_all}
+
+    if [ "$overwrite" == "true" ]
+    then
+      rm -rf "$dst"
+      success "removed $dst"
+    fi
+
+    if [ "$backup" == "true" ]
+    then
+      mv "$dst" "${dst}.backup"
+      success "moved $dst to ${dst}.backup"
+    fi
+
+    if [ "$skip" == "true" ]
+    then
+      success "skipped $src"
+    fi
+  fi
+
+  if [ "$skip" != "true" ]  # "false" or empty
+  then
+    ln -s "$1" "$2"
+    success "linked $1 to $2"
+  fi
+}
+
+install_dotfiles () {
+  info 'installing dotfiles'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+  do
+    dst="$HOME/.$(basename "${src%.*}")"
+    link_file "$src" "$dst"
   done
 }
 
-setup_gitconfig
 install_dotfiles
 
-# If we are on a mac, lets install and setup homebrew and iterm2
+# If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]
 then
-
   # Install iTerm2
-  heading "Installing iTerm2..."
+  info "Installing iTerm2..."
   . script/iterm2
   if [ $? -eq 0 ];
   then
@@ -145,12 +129,12 @@ then
   fi
 
   # Install Homebrew Packages
-  heading "Installing homebrew formulae..."
+  info "Installing homebrew formulae..."
   . script/homebrew
   if [ $? -eq 0 ];
   then
     success "formulae installed"
-    heading "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+    info "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
   else
     fail "error installing formulae"
   fi

@@ -8,11 +8,11 @@
 # Check for Homebrew
 if test ! $(which brew)
 then
-  echo "  x You should probably install Homebrew first:"
-  echo "    https://github.com/mxcl/homebrew/wiki/installation"
-  return
+  echo "  Installing Homebrew for you."
+  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" > /tmp/homebrew-install.log
 fi
 
+# The set of packages I want installed by default
 packages=(
   # Install GNU core utilities (those that come with OS X are outdated)
   coreutils
@@ -49,4 +49,4 @@ done
 # Remove outdated versions from the cellar
 brew cleanup >/dev/null 2>/dev/null
 
-return 0
+exit 0

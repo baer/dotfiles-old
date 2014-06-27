@@ -9,7 +9,7 @@
         # Display concise repository status
         wtf  = !$DOTFILES/bin/git-wtf
 
-        # Delete all local branches that have been merged into HEAD 
+        # Delete all local branches that have been merged into HEAD
         dall = branch -d `git branch --merged | grep -v '^*' | grep -v 'master' | tr -d '\n'`
 
         # shortcuts
@@ -71,3 +71,9 @@
         prompt = false
 [help]
         autocorrect = 0
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to surpress warning message
+        default = simple
