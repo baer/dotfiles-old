@@ -1,0 +1,31 @@
+{
+  "name": "atom-jshint",
+  "main": "./index.js",
+  "version": "1.4.3",
+  "private": true,
+  "description": "Validates your JS against JSHint as you type. The original and most used.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Joezo/atom-jshint"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "emissary": "1.x",
+    "underscore-plus": "~1.0.4"
+  },
+  "readme": "# Atom-jshint\n\nThe original and most used JSHint [package](http://atom.io/packages/atom-jshint) for [Atom](https://atom.io).\n\nValidates your JS files against [JSHint](http://jshint.com) on save and as you type.\n\n![Scrollable pane](http://cl.ly/image/2N2z0z420t2n/Image%202014-03-03%20at%208.35.27%20pm.png)\n\nInstallation\n===\n\n`apm install atom-jshint`\n\nOr Preferences > Packages > Search for `atom-jshint` *(install `atom-jshint`, not `jshint`)*.\n\nUsage\n===\n\nThis package will run against your currently open file as you type and when you save.\n\nIncluded features\n===\n * Supports jshintConfig in package.json\n * Supports custom .jshintrc file in project root and all parent directories\n * Line number turns red when error on that line\n * Once you move your cursor to a line with an error, it will show in the status bar.\n * Configure how you want JSHint to run.\n * Shows a scrollable pane of errors\n\n\nContributing\n===\n\nI'd love for people to get involved in the development of this plugin, so please do create issues and pull requests.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Joezo/atom-jshint/issues"
+  },
+  "homepage": "https://github.com/Joezo/atom-jshint",
+  "_id": "atom-jshint@1.4.3",
+  "dist": {
+    "shasum": "c363c57b710e0143b635f57c8dd58b4837726116"
+  },
+  "_resolved": "/var/folders/l3/dvrnkwhs6vl_qqhy6jqxgz58cdqg2p/T/d-114617-25916-zpg6s7/package.tgz",
+  "_from": "/var/folders/l3/dvrnkwhs6vl_qqhy6jqxgz58cdqg2p/T/d-114617-25916-zpg6s7/package.tgz"
+}

@@ -129,7 +129,6 @@ then
   fi
 
   # Install Homebrew Packages
-  info "Installing homebrew formulae..."
   . script/homebrew
   if [ $? -eq 0 ];
   then

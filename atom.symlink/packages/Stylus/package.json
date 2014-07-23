@@ -1,0 +1,27 @@
+{
+  "name": "Stylus",
+  "version": "0.3.1",
+  "private": true,
+  "description": "Adds syntax highlighting and snippets to Stylus files in Atom.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthojo/language-stylus"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# Stylus language support in Atom (with extra snippets)\n\nAdds syntax highlighting and snippets to Stylus files in Atom.\n\nOriginally [converted](http://atom.io/docs/latest/converting-a-text-mate-bundle) from the [Stylus TextMate bundle](https://github.com/vgrichina/Stylus.tmbundle) and [Stylus Plus bundle](https://github.com/jackbrewer/stylus-plus.tmbundle).\n\nContributions are greatly appreciated. Please fork this repository and open a pull request to add snippets, make grammar tweaks, etc.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/matthojo/language-stylus/issues"
+  },
+  "homepage": "https://github.com/matthojo/language-stylus",
+  "_id": "Stylus@0.3.1",
+  "dist": {
+    "shasum": "39701184c0d8c2736f027111bb4d9265f08faa9c"
+  },
+  "_resolved": "/var/folders/l3/dvrnkwhs6vl_qqhy6jqxgz58cdqg2p/T/d-114615-64182-bk1kbp/package.tgz",
+  "_from": "/var/folders/l3/dvrnkwhs6vl_qqhy6jqxgz58cdqg2p/T/d-114615-64182-bk1kbp/package.tgz"
+}

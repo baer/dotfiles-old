@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # prompt themeing
-source "$DOTFILES/bash/bash-it.color.theme"
-source "$DOTFILES/bash/bash-it.base.theme"
+source "$DOTFILES/bash/theme/bash-it.color.theme"
+source "$DOTFILES/bash/theme/bash-it.base.theme"
 
 # Create the SSH location string
 function ssh_info {
