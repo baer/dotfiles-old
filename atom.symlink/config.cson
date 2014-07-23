@@ -12,6 +12,7 @@
   'disabledPackages': [
     'autocomplete'
   ]
+  'useReactEditor': true
 'exception-reporting':
   'userId': 'a26bd123-9c44-e41b-5cfa-0194d7071c58'
 'release-notes':

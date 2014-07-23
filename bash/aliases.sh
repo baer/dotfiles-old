@@ -5,7 +5,6 @@
 ##===============================================================
 
 # Shortcuts
-alias code='cd ~/Code'
 alias reload='source ~/.bashrc'
 alias path='echo -e ${PATH//:/\\n}'
 
