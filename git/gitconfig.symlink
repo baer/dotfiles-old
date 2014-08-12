@@ -77,3 +77,6 @@
         #
         # Setting to git 2.0 default to surpress warning message
         default = simple
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
