@@ -4,6 +4,7 @@
   'preferredLineLength': 100
   'showInvisibles': true
   'showIndentGuide': true
+  'invisibles': {}
 'core':
   'themes': [
     'atom-dark-ui'
