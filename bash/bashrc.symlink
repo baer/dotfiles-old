@@ -3,7 +3,11 @@ export DOTFILES=$HOME/dotfiles
 export OS=`uname -s`
 
 # source every .sh file in this rep
-for config_file in $(find $DOTFILES -iname "*.sh"); do
+# TODO: Search all dirs EXCEPT atom.symlink
+for config_file in $(find $HOME/dotfiles/bash -iname "*.sh"); do
+  source $config_file
+done
+for config_file in $(find $HOME/dotfiles/system -iname "*.sh"); do
   source $config_file
 done
 
