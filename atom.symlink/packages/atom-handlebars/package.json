@@ -1,6 +1,6 @@
 {
   "name": "atom-handlebars",
-  "version": "0.3.38",
+  "version": "0.4.0",
   "description": "Handlebars support in Atom",
   "engines": {
     "atom": "*",
@@ -30,10 +30,10 @@
   },
   "readme": "# Handlebars support in Atom\n\nAdds syntax highlighting and snippets to Handlebars files in Atom.\n\nModified from [HTML Language Support in Atom](https://github.com/atom/language-html).\n\nContributions are greatly appreciated. Please fork this repository and open a pull request to add snippets, make grammar tweaks, etc.\n",
   "readmeFilename": "README.md",
-  "_id": "atom-handlebars@0.3.38",
+  "_id": "atom-handlebars@0.4.0",
   "dist": {
-    "shasum": "17220bfb55d66967adac3d235f3d329642b511b8"
+    "shasum": "0f686886b03197a3a870ef963b671f3d9a001bad"
   },
-  "_resolved": "/var/folders/lv/q20pbdh53x35nr486jz413fh0000gn/T/d-11463-28017-gks45f/package.tgz",
-  "_from": "/var/folders/lv/q20pbdh53x35nr486jz413fh0000gn/T/d-11463-28017-gks45f/package.tgz"
+  "_resolved": "/private/var/folders/lv/q20pbdh53x35nr486jz413fh0000gn/T/d-114819-41601-c78suq/package.tgz",
+  "_from": "/private/var/folders/lv/q20pbdh53x35nr486jz413fh0000gn/T/d-114819-41601-c78suq/package.tgz"
 }
