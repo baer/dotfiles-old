@@ -37,7 +37,7 @@
 
         # Safeguards
         rebase = rebase -i
-        blame = blame -w
+        blame = blame -w --no-merges
 [color]
         diff = auto
         status = auto
