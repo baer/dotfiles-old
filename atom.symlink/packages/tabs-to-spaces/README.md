@@ -16,7 +16,7 @@ apm install tabs-to-spaces
 
 ## Use
 
-It can convert between leading tabs and spaces in the current editor window. It can be executed from:
+It can convert between leading tabs and spaces in the current editor window. Any combination of leading whitespace is converted to all spaces (Untabify) or the maximum number of tabs and minimum number of spaces with tabs up front (Tabify) to fill the same space. It can be executed from:
 
 * Command Palette
     * `Tabs To Spaces: Tabify`
@@ -32,9 +32,8 @@ It can convert between leading tabs and spaces in the current editor window. It 
 
 Tabs to Spaces uses the following configuration values:
 
-* `editor.getTabLength()` &mdash; sets the number of space characters a tab character is equivalent to
-* `tabs-to-spaces.onSave` &mdash; if set to either "tabify" or "untabify" it performs that operation on save
-    * Previously this was named `on-save`, but this conflicts with the humanizing algorithm used for configuration options, so it was changed to follow the standard.
+* `editor.tabLength` &mdash; sets the number of space characters a tab character is equivalent to
+* `tabs-to-spaces.onSave` &mdash; if set to either `tabify` or `untabify` it performs that operation on save
 
 ### Keybinding
 
